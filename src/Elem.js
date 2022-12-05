@@ -11,6 +11,7 @@ const Elem = ({ text, id, setList, list }) => {
     if (index !== -1) tmpList.splice(index, 1);
     console.log("ma liste après supression", tmpList);
     setList(tmpList);
+    localStorage.setItem("list", JSON.stringify(tmpList))
   }
 
   return (

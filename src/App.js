@@ -5,7 +5,7 @@ import List from "./List";
 import { v4 as uuidv4 } from 'uuid';
 
 function App() {
-  const [list, setList] = useState([]);
+  const [list, setList] = useState(JSON.parse(localStorage.getItem("list")) || []);
   const [val, setVal] = useState("");
 
   function handleChange(e) {
@@ -17,8 +17,10 @@ function App() {
     e.preventDefault()
     console.log("ici", list)
     const tmpVal = val
-    setList([...list, {text: tmpVal, id: uuidv4()}]);
+    const tmpList =[...list, {text: tmpVal, id: uuidv4()}] 
+    setList(tmpList);
     setVal("")
+    localStorage.setItem("list", JSON.stringify(tmpList))
   }
 
   return (
